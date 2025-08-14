@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inducción y Movilización del Voto</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Raleway', sans-serif; line-height: 1.7; color: #2c3e50; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; }
+        
+        .header { position: fixed; top: 0; left: 0; right: 0; background: rgba(255,255,255,0.95); 
+                 backdrop-filter: blur(10px); z-index: 1000; border-bottom: 2px solid #3498db; padding: 15px 0; }
+        .nav-container { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; 
+                        align-items: center; padding: 0 20px; }
+        .logo { font-size: 1.2em; font-weight: bold; color: #2c3e50; display: flex; align-items: center; gap: 10px; }
+        .logo img { height: 40px; width: auto; }
+        .nav-menu { display: flex; list-style: none; gap: 25px; }
+        .nav-menu a { text-decoration: none; color: #2c3e50; font-size: 0.9em; padding: 5px 10px; 
+                     border-radius: 5px; transition: all 0.3s ease; }
+        .nav-menu a:hover { background: #3498db; color: white; }
+        
+        .main-content { margin-top: 80px; }
+        .hero { background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: white; 
+               padding: 80px 40px; text-align: center; }
+        .hero h1 { font-size: 3em; margin-bottom: 20px; font-weight: 300; }
+        .hero .subtitle { font-size: 1.3em; opacity: 0.9; margin-bottom: 30px; }
+        
+        .section { padding: 60px 40px; border-bottom: 1px solid #ecf0f1; }
+        .section:nth-child(even) { background: #f8f9fa; }
+        .section-number { display: inline-block; background: #3498db; color: white; width: 40px; 
+                         height: 40px; border-radius: 50%; text-align: center; line-height: 40px; 
+                         font-weight: bold; margin-bottom: 20px; }
+        .section h2 { font-size: 2.5em; color: #2c3e50; margin-bottom: 30px; font-weight: 300; }
+        
+        .markdown-content { font-size: 1.1em; line-height: 1.8; margin: 30px 0; }
+        .markdown-content p { margin-bottom: 20px; }
+        .markdown-content ul, .markdown-content ol { margin: 20px 0; padding-left: 30px; }
+        .markdown-content blockquote { border-left: 4px solid #3498db; background: #ecf0f1; 
+                                      padding: 20px; margin: 30px 0; font-style: italic; }
+        
+        .chart-container { background: white; margin: 40px 0; padding: 30px; border-radius: 10px; 
+                          box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 1px solid #ecf0f1; }
+        .chart-title { text-align: center; font-size: 1.4em; color: #2c3e50; margin-bottom: 25px; font-weight: 500; }
+        
+        .insight-box { background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%); color: white; 
+                      padding: 30px; border-radius: 10px; margin: 40px 0; }
+        .insight-box h4 { font-size: 1.4em; margin-bottom: 15px; }
+        .insight-box ul { list-style: none; padding: 0; }
+        .insight-box li { margin-bottom: 10px; padding-left: 25px; position: relative; }
+        .insight-box li:before { content: "→"; position: absolute; left: 0; font-weight: bold; }
+        
+        .footer { background: #2c3e50; color: white; padding: 40px; text-align: center; }
+        html { scroll-behavior: smooth; }
+        
+        /* Placeholder para gráficos que reemplazarás */
+        .chart-placeholder { background: #f8f9fa; border: 2px dashed #bdc3c7; height: 500px; 
+                            display: flex; align-items: center; justify-content: center; 
+                            color: #7f8c8d; font-size: 1.2em; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <span style="font-weight: 600; color: #2c3e50;">El Elefante en la Urna</span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#motivacion">I. Motivación</a></li>
+                    <li><a href="#datos">II. Contribución</a></li>
+                    <li><a href="#evidencia">III. Evidencia</a></li>
+                    <li><a href="#origen">IV. Origen</a></li>
+                    <li><a href="#induccion">V. Inducción</a></li>
+                    <li><a href="#comentarios">VI. Comentarios</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <section class="hero">
+                <h1>El Elefante en la Urna</h1>
+                <div class="subtitle">Análisis de la Elección Judicial</div>
+                <div style="display: flex; align-items: center; justify-content: center; margin: 30px 0 20px 0; gap: 20px;">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTAwIDQwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTAiIGhlaWdodD0iNDAiIGZpbGw9IiNmZmZmZmYiLz4KPHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA4MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHRleHQgeD0iMTUiIHk9IjI4IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZmZmZmZmIj5JRVRQPC90ZXh0Pgo8L3N2Zz4KPC9zdmc+" alt="IETP Logo" style="height: 40px; filter: brightness(0) invert(1);">
+                    <div style="text-align: left;">
+                        <div style="font-size: 0.85em; opacity: 0.9;">Preparado por Aleister Montfort para el</div>
+                        <div style="font-size: 0.85em; opacity: 0.8; margin-bottom: 3px;">Instituto de Estudios para la Transición Democrática</div>
+                    </div>
+                </div>
+                <div class="author">Museo León Trotsky • <span id="fecha-reporte"></span></div>
+            </section>
+            
+            <!-- I. Motivación -->
+            <section id="motivacion" class="section">
+                <div class="section-number">I</div>
+                <h2>Motivación</h2>
+                <div class="markdown-content" id="motivacion-content"></div>
+            </section>
+            
+            <!-- II. Arquitectura del voto: contribuciones -->
+            <section id="datos" class="section">
+                <div class="section-number">II</div>
+                <h2>Arquitectura del voto: contribuciones</h2>
+                <div class="markdown-content" id="datos-content"></div>
+            </section>
+            
+            <!-- III. Evidencia -->
+            <section id="evidencia" class="section">
+                <div class="section-number">III</div>
+                <h2>La evidencia de la inducción: Clusters de voto</h2>
+                <div class="markdown-content" id="evidencia-content"></div>
+                <div class="chart-container">
+                    <div class="chart-title">Matriz de Correlaciones: Gráfica de Calor del Voto Conjunto</div>
+                    <iframe src="graficos/1. mapacalortriangular.html" width="100%" height="750" frameborder="0"></iframe>
+                </div>
+                
+                <!-- Transición: Del mapa de calor al análisis de redes -->
+                <div class="markdown-content" style="margin: 40px 0; padding: 25px; background: #f1f4f8; border-left: 4px solid #2980b9; border-radius: 8px;">
+                    <h4 style="color: #2c3e50; margin-bottom: 15px; font-size: 1.2em;">De las correlaciones a las comunidades electorales</h4>
+                    <p style="margin-bottom: 12px; line-height: 1.6;">El mapa de calor anterior revela patrones de co-votación, pero para identificar con precisión las <strong>comunidades electorales</strong> y sus estructuras internas, es necesario aplicar algoritmos de detección de comunidades que permitan:</p>
+                    <ul style="margin: 15px 0; padding-left: 20px; line-height: 1.5;">
+                        <li style="margin-bottom: 8px;"><strong>Delimitar bloques de votación:</strong> Identificar grupos de candidatos con patrones de co-votación sistemáticos</li>
+                        <li style="margin-bottom: 8px;"><strong>Medir cohesión interna:</strong> Evaluar la intensidad de las conexiones dentro de cada comunidad</li>
+                        <li style="margin-bottom: 8px;"><strong>Visualizar relaciones:</strong> Representar gráficamente las conexiones entre candidatos y comunidades</li>
+                    </ul>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart-title">Identificación del Bloque Oficialista: Candidatos con Voto Conjunto</div>
+                    <iframe src="graficos/2. grafo_comunidades_SCJN.html" width="100%" height="800" frameborder="0" style="min-width: 1400px; overflow-x: auto;"></iframe>
+                </div>
+                
+                <!-- Análisis adicional: Estructuras Densas y Cliques -->
+                <div class="markdown-content" style="margin: 40px 0; padding: 30px; background: #f8f9fa; border-left: 4px solid #3498db; border-radius: 8px;">
+                    <h4 style="color: #2c3e50; margin-bottom: 20px; font-size: 1.3em;">Análisis Complementario: Estructuras Densas y Cliques</h4>
+                    <p style="margin-bottom: 15px; line-height: 1.7;">El siguiente análisis profundiza en la identificación de <strong>estructuras densas</strong> y <strong>cliques</strong> dentro de la red de co-votación judicial, permitiendo:</p>
+                    <ul style="margin: 20px 0; padding-left: 25px; line-height: 1.6;">
+                        <li style="margin-bottom: 10px;"><strong>Detección de subgrupos altamente conectados:</strong> Identificación de candidatos que forman núcleos de votación conjunta</li>
+                        <li style="margin-bottom: 10px;"><strong>Análisis de densidad de conexiones:</strong> Medición de la intensidad de las relaciones de co-votación</li>
+                        <li style="margin-bottom: 10px;"><strong>Validación de patrones de inducción:</strong> Confirmación estadística de los mecanismos de coordinación electoral</li>
+                        <li style="margin-bottom: 10px;"><strong>Mapeo de influencia electoral:</strong> Identificación de nodos centrales en la red de votación</li>
+                    </ul>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart-title">Análisis de Cliques y Estructuras Densas en la Red de Co-votación</div>
+                    <div style="width: 100%; overflow-x: auto; border-radius: 8px;">
+                        <iframe src="graficos/2.1cliques_SCJN.html" width="1200" height="800" frameborder="0" style="border: none; display: block; margin: 0 auto;"></iframe>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- IV. Origen -->
+            <section id="origen" class="section">
+                <div class="section-number">IV</div>
+                <h2>¿De dónde vienen los votos?</h2>
+                <div class="markdown-content" id="origen-content"></div>
+                <div class="chart-container">
+                    <div class="chart-title">Distribución Geográfica del Voto en Bloque por Entidad Federativa</div>
+                    <iframe src="graficos/3. por_estados_ordenado.html" width="100%" height="600" frameborder="0"></iframe>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-title">Composición Detallada del Voto por Entidad y Candidato</div>
+                    <iframe src="graficos/4. treemap.html" width="100%" height="600" frameborder="0"></iframe>
+                </div>
+            </section>
+            
+            <!-- V. Inducción -->
+            <section id="induccion" class="section">
+                <div class="section-number">V</div>
+                <h2>Inducción + Movilización</h2>
+                <div class="markdown-content" id="induccion-content"></div>
+                <div class="chart-container">
+                    <div class="chart-title">Voto Oficialista por Decil de Participación</div>
+                    <!-- GRÁFICO 5: oficialista_por_decil_participacion.html -->
+                    <iframe src="graficos/5. oficialista_por_decil_participacion.html" 
+                            width="100%" height="600" frameborder="0" 
+                            style="border: none; border-radius: 8px;"></iframe>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart-title">Voto Planilla Fallida por Decil de Participación</div>
+                    <!-- GRÁFICO 6: fallida_por_decil_participacion.html -->
+                    <iframe src="graficos/6. fallida_por_decil_participacion.html" 
+                            width="100%" height="600" frameborder="0" 
+                            style="border: none; border-radius: 8px;"></iframe>
+                </div>
+            </section>
+            
+            <!-- Separador -->
+            <div class="section-separator"></div>
+            
+            <!-- V. Análisis Individual por Candidato -->
+            <section id="analisis-individual" class="section">
+                <div class="section-number">V</div>
+                <h2>Análisis Individual por Candidato</h2>
+                <div class="markdown-content" id="analisis-individual-content">
+                    <p class="placeholder-text">
+                        [PLACEHOLDER] Aquí se incluirá el análisis detallado del comportamiento electoral 
+                        de cada candidato según los deciles de participación. Este análisis permitirá 
+                        identificar patrones específicos de apoyo y la relación entre participación 
+                        ciudadana y preferencias electorales por candidato individual.
+                    </p>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart-title">Planilla Oficialista: Participación y Voto por Candidato</div>
+                    <!-- GRÁFICO 7: planilla_oficialista_participacion_y_voto.html -->
+                    <iframe src="graficos/7. planilla_oficialista_participacion_y_voto.html" 
+                            width="100%" height="700" frameborder="0" 
+                            style="border: none; border-radius: 8px;"></iframe>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart-title">Planilla Fallida: Participación y Voto por Candidato</div>
+                    <!-- GRÁFICO 8: planilla_fallida_participacion_y_voto.html -->
+                    <iframe src="graficos/8. planilla_fallida_participacion_y_voto.html" 
+                            width="100%" height="700" frameborder="0" 
+                            style="border: none; border-radius: 8px;"></iframe>
+                </div>
+            </section>
+            
+            <!-- VI. Comentarios -->
+            <section id="comentarios" class="section">
+                <div class="section-number">VI</div>
+                <h2>Comentarios finales</h2>
+                <div class="markdown-content" id="comentarios-content"></div>
+            </section>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <p>Análisis Electoral • Generado el <span id="fecha-footer"></span></p>
+    </footer>
+
+    <script>
+        // Configurar fechas
+        const fecha = new Date().toLocaleDateString('es-ES', {year: 'numeric', month: 'long', day: 'numeric'});
+        document.getElementById('fecha-reporte').textContent = fecha;
+        document.getElementById('fecha-footer').textContent = fecha;
+        
+        // Contenido Markdown (puedes editarlo según tu análisis)
+        const contenido = {
+            motivacion: `# El contexto de la elección judicial\n\nAntes de la publicación de este trabajo, en el debate público en torno a la elección judicial de 2025 :\n\n1.	Existían **denuncias sobre el uso de “acordeones”**. Sin embargo, no se había realizado una cuantificación ni visualización sistemática de su impacto en los patrones de votación.\n\n2.	El análisis empírico disponible había **enfatizado la “pluralidad” dentro del bloque oficialista**, destacando la presencia de competencia interna entre candidaturas promovidas por el gobierno. Esta narrativa sugería una elección con diversidad y margen de decisión sin centrarse en lo relevante: el efecto de los acordeones en el resultado final, con la consecuente **desligitimación del proceso**.\n\n3.	Al interior del Instituto Nacional Electoral (INE), un grupo de cinco consejeros —encabezados por Arturo Castillo— había denunciado el uso de acordeones. **A pesar de contar con evidencia, sus alertas no prosperaron**`,
+            
+            datos: `Este análisis se inscribe en una conversación en curso sobre la operación de planillas en la elección judicial. Trabajos recientes, como los de José Ramón Cossío y Javier Aparicio, ya han advertido sobre los patrones de co-votación y la circulación de "acordeones". Este estudio ofrece un abordaje empírico y visual que permite dimensionar el fenómeno con otra perspectiva.\n\n### Contribuciones empíricas principales:\n\n1. **Visualización del voto en bloque**: Mapas de calor, dendogramas y grafos que muestran con claridad la agrupación de candidaturas votadas conjuntamente en decenas de miles de secciones.\n\n2. **Estimación conservadora del número de planillas**: se identifican al menos 22 agrupamientos cerrados de votación, distintos del bloque oficialista ganador, lo que sugiere una operación de voto inducido más amplia y diversa de lo que se ha reportado hasta ahora.\n\n3. **Caracterización de las comunidades electorales**: se analizan no solo los bloques de co-votación, sino su intensidad interna, cohesión estructural y relaciones entre ellos, revelando una arquitectura compleja del voto.\n\n4. **Evidencia de movilización selectiva**: a pesar de los bajos niveles generales de participación, las secciones con mayor participación tienden a coincidir con aquellas donde se votó por listas completas, lo que sugiere una estrategia de movilización territorial dirigida —una huella estadística del uso eficaz de acordeones.\n\n### Dimensiones exploradas adicionales:\n\n • **Territorialidad del voto**: patrones regionales que reflejan redes de apoyo por planilla y candidato.\n\n• **Competencia interna dentro del oficialismo y planillas alternativas**: que revela jerarquías dentro del bloque oficialista y la existencia de agrupamientos alternativos con estructuras propias`,
+            
+            evidencia: `### ¿Cómo se detectan los bloques de co-votación?\n\n• **Construcción de la matriz de correlaciones**: A partir de los datos de votación por sección, se calculó qué tan frecuentemente eran seleccionadas juntas las candidaturas, generando una matriz de correlaciones entre todos los pares.\n\n• **Agrupamiento por similitud**: Esta matriz se reordenó utilizando un algoritmo que detecta agrupamientos naturales —clusters—, identificando patrones estadísticos de co-votación.\n\n• **Visualización mediante mapa de calor**: El resultado se presenta como un mapa de calor, donde los tonos más oscuros indican mayor afinidad entre candidaturas. Las concentraciones diagonales revelan posibles planillas o bloques organizados.`,
+            
+            origen: `## ¿De dónde vienen los votos del bloque oficialista?\n\n### Distribución geográfica del voto en bloque\nLos **mayores porcentajes de voto conjunto** se registraron en:\n\n- **Estado de México**: 10.9%\n- **Chiapas**: 9.1%\n- **Ciudad de México**: 8.3%\n- **Puebla**: 7.4%\n- **Oaxaca**: 5.3%\n- **Coahuila**: 4.9%\n- **Guerrero**: 4.7%\n- **Veracruz**: 4.5%\n- **Tamaulipas y Nuevo León**: 3.4% cada uno\n\n### Hallazgos significativos\n> **Chiapas, Oaxaca y Guerrero** destacan porque, aunque no son las entidades más pobladas, concentraron un respaldo significativo: **señal de una operación política especialmente eficaz**.\n\n### Patrones identificados\n- **Concentración urbana**: Mayor efectividad en zonas metropolitanas\n- **Eficacia regional**: Operación particularmente exitosa en estados del sur\n- **Coordinación nacional**: Patrón consistente a escala país`,
+            
+            induccion: `## Los acordeones como mecanismo de inducción\n\n### Evidencia estadística de efectividad\nEl análisis demuestra que **los acordeones cumplieron su objetivo**: asegurar la elección por una misma planilla en boletas distintas.\n\n### Características del voto inducido\n- **Correlaciones altísimas**: Cercanas a 1 entre candidatos del bloque oficialista\n- **Patrón sistemático**: Repetición en miles de secciones electorales\n- **Coordinación nacional**: Efectividad a escala país\n\n### Diferenciación clara\n\n#### Voto coordinado (bloque oficialista)\n- Correlaciones perfectas entre candidatos específicos\n- Concentración geográfica estratégica\n- Efecto de arrastre entre aspirantes\n\n#### Voto disperso (resto de candidatos)\n- Ausencia de correlaciones significativas\n- Votaciones aisladas y fragmentadas\n- Sin efecto de arrastre\n\n### Implicaciones para la equidad\n> **La asimetría en el uso de acordeones** distorsionó las condiciones de equidad, poniendo en entredicho la legitimidad de la elección.`,
+            
+            comentarios: `## El elefante ya no está oculto\n\n### Lo que revelan los datos\nEste análisis estadístico **confirma lo que varios analistas y consejeros del INE ya habían advertido**: comportamientos de votación difíciles de atribuir a un ejercicio no coordinado del voto.\n\n### Hallazgos principales\n1. **Existencia comprobada** de voto en bloque sistemático\n2. **Eficacia demostrada** de los acordeones como mecanismo de inducción\n3. **Asimetría evidente** en las condiciones de la contienda\n\n### Más allá de las denuncias\n> Lo que hasta ahora había sido **materia de denuncia y crónica periodística** ahora cuenta con **evidencia estadística contundente**.\n\n### Implicaciones para la democracia\n- Los acordeones **no solo orientaron**: **indujeron** un patrón sistemático\n- Se impuso **sin sobresaltos el grupo promovido desde el poder**\n- Las reglas **no se aplicaron equitativamente**\n\n### Reflexión final\nAunque este análisis **no aporta evidencia concluyente de ilegalidades**, sí revela una regularidad estadística que indica que los acordeones funcionaron y, por eso mismo, **dejaron huellas medibles en los datos**.\n\n> "El asunto de fondo es que este mecanismo distorsionó las condiciones de equidad, poniendo en entredicho la legitimidad de la elección."\n\n---\n\n*Seguir la pista del elefante era necesario. Los datos confirman que ya no está oculto en la urna.*`
+        };
+        
+        // Renderizar markdown
+        Object.keys(contenido).forEach(seccion => {
+            const elemento = document.getElementById(seccion + '-content');
+            if (elemento) {
+                elemento.innerHTML = marked.parse(contenido[seccion]);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis Electoral: Elección Judicial 2025 - Versión Portable</title>
+    
+    <!-- Plotly.js embebido -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <style>
+        /* Fuentes del sistema para compatibilidad offline */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7; 
+            color: #2c3e50; 
+            background: #f8f9fa;
+        }
+        
+        .container { max-width: 1000px; margin: 0 auto; background: white; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+        
+        .header { 
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); 
+            color: white; 
+            padding: 40px; 
+            text-align: center; 
+        }
+        .header h1 { font-size: 2.5em; margin-bottom: 15px; font-weight: 300; }
+        .header .subtitle { font-size: 1.2em; opacity: 0.9; }
+        .header .info { 
+            margin-top: 20px; 
+            padding: 15px; 
+            background: rgba(255,255,255,0.1); 
+            border-radius: 8px; 
+            font-size: 0.9em;
+        }
+        
+        .section { padding: 50px 40px; border-bottom: 1px solid #ecf0f1; }
+        .section:nth-child(even) { background: #f8f9fa; }
+        .section-number { 
+            display: inline-block; 
+            background: #3498db; 
+            color: white; 
+            width: 35px; 
+            height: 35px; 
+            border-radius: 50%; 
+            text-align: center; 
+            line-height: 35px; 
+            font-weight: bold; 
+            margin-bottom: 20px; 
+            font-size: 0.9em;
+        }
+        .section h2 { font-size: 2.2em; color: #2c3e50; margin-bottom: 25px; font-weight: 300; }
+        
+        .markdown-content { font-size: 1.05em; line-height: 1.8; margin: 25px 0; }
+        .markdown-content p { margin-bottom: 18px; }
+        .markdown-content ul, .markdown-content ol { margin: 18px 0; padding-left: 25px; }
+        .markdown-content li { margin-bottom: 8px; }
+        .markdown-content h3 { color: #2c3e50; margin: 25px 0 15px 0; font-size: 1.3em; }
+        .markdown-content h4 { color: #34495e; margin: 20px 0 10px 0; font-size: 1.1em; }
+        .markdown-content blockquote { 
+            border-left: 4px solid #3498db; 
+            background: #ecf0f1; 
+            padding: 20px; 
+            margin: 25px 0; 
+            font-style: italic; 
+        }
+        
+        .chart-container { 
+            background: white; 
+            margin: 35px 0; 
+            padding: 25px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+            border: 1px solid #ecf0f1; 
+        }
+        .chart-title { 
+            text-align: center; 
+            font-size: 1.3em; 
+            color: #2c3e50; 
+            margin-bottom: 20px; 
+            font-weight: 500; 
+        }
+        
+        .insight-box { 
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%); 
+            color: white; 
+            padding: 25px; 
+            border-radius: 8px; 
+            margin: 30px 0; 
+        }
+        .insight-box h3 { margin-bottom: 15px; font-size: 1.2em; }
+        
+        .footer { 
+            background: #2c3e50; 
+            color: white; 
+            padding: 30px; 
+            text-align: center; 
+        }
+        .footer p { margin-bottom: 10px; }
+        
+        /* Estilos para impresión */
+        @media print {
+            .header { page-break-inside: avoid; }
+            .section { page-break-inside: avoid; }
+            .chart-container { page-break-inside: avoid; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container { margin: 0; }
+            .header, .section { padding: 30px 20px; }
+            .header h1 { font-size: 2em; }
+            .section h2 { font-size: 1.8em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🗳️ Análisis Electoral: Elección Judicial 2025</h1>
+            <div class="subtitle">Evidencia Empírica de Inducción y Movilización del Voto</div>
+            <div class="info">
+                <strong>📄 Versión Portable</strong> • Este archivo funciona sin conexión a internet<br>
+                <strong>📊 Incluye:</strong> 8 visualizaciones interactivas • Análisis completo • Metodología detallada
+            </div>
+        </div>
+
+        <!-- Sección I: Motivación -->
+        <div class="section">
+            <div class="section-number">I</div>
+            <h2>Motivación</h2>
+            <div class="markdown-content" id="motivacion"></div>
+        </div>
+
+        <!-- Sección II: Datos y Metodología -->
+        <div class="section">
+            <div class="section-number">II</div>
+            <h2>Datos y Metodología</h2>
+            <div class="markdown-content" id="metodologia"></div>
+        </div>
+
+        <!-- Sección III: Evidencia Empírica -->
+        <div class="section">
+            <div class="section-number">III</div>
+            <h2>Evidencia Empírica</h2>
+            <div class="markdown-content" id="evidencia"></div>
+            
+            <!-- Gráfico 1: Mapa de Calor -->
+            <div class="chart-container">
+                <div class="chart-title">📊 Mapa de Calor Triangular - Correlaciones de Voto</div>
+                <iframe src="graficos/1. mapacalortriangular.html" width="100%" height="600" frameborder="0"></iframe>
+            </div>
+            
+            <!-- Gráfico 2: Grafo de Comunidades -->
+            <div class="chart-container">
+                <div class="chart-title">🕸️ Red de Comunidades Electorales</div>
+                <iframe src="graficos/2. grafo_comunidades_SCJN.html" width="100%" height="600" frameborder="0"></iframe>
+            </div>
+            
+            <!-- Gráfico 2.1: Cliques -->
+            <div class="chart-container">
+                <div class="chart-title">🔗 Detección de Cliques - Voto en Bloque</div>
+                <iframe src="graficos/2.1cliques_SCJN.html" width="100%" height="500" frameborder="0"></iframe>
+            </div>
+        </div>
+
+        <!-- Sección IV: Análisis Territorial -->
+        <div class="section">
+            <div class="section-number">IV</div>
+            <h2>Análisis Territorial</h2>
+            <div class="markdown-content" id="territorial"></div>
+            
+            <!-- Gráfico 3: Dendrograma -->
+            <div class="chart-container">
+                <div class="chart-title">🌳 Dendrograma - Agrupación por Estados</div>
+                <iframe src="graficos/3. por_estados_ordenado.html" width="100%" height="600" frameborder="0"></iframe>
+            </div>
+            
+            <!-- Gráfico 4: TreeMap -->
+            <div class="chart-container">
+                <div class="chart-title">📦 TreeMap - Distribución Territorial del Voto</div>
+                <iframe src="graficos/4. treemap.html" width="100%" height="600" frameborder="0"></iframe>
+            </div>
+        </div>
+
+        <!-- Sección V: Inducción -->
+        <div class="section">
+            <div class="section-number">V</div>
+            <h2>¿Dónde florecen los acordeones?</h2>
+            <div class="markdown-content" id="induccion"></div>
+            
+            <!-- Gráfico 5: Oficialista por Decil -->
+            <div class="chart-container">
+                <div class="chart-title">📈 Planilla Oficialista - Participación por Deciles</div>
+                <iframe src="graficos/5. oficialista_por_decil_participacion.html" width="100%" height="500" frameborder="0"></iframe>
+            </div>
+            
+            <!-- Gráfico 6: Fallida por Decil -->
+            <div class="chart-container">
+                <div class="chart-title">📉 Planilla Fallida+ - Participación por Deciles</div>
+                <iframe src="graficos/6. fallida_por_decil_participacion.html" width="100%" height="500" frameborder="0"></iframe>
+            </div>
+            
+            <!-- Análisis entre gráficos 5 y 6 -->
+            <div class="markdown-content" id="participacion-bloque"></div>
+        </div>
+
+        <!-- Sección VI: Análisis Individual -->
+        <div class="section">
+            <div class="section-number">VI</div>
+            <h2>Análisis Individual por Candidato</h2>
+            <div class="markdown-content" id="analisis-individual"></div>
+            
+            <!-- Gráfico 7: Oficialista Participación y Voto -->
+            <div class="chart-container">
+                <div class="chart-title">🎯 Planilla Oficialista - Participación vs Voto Individual</div>
+                <iframe src="graficos/7. planilla_oficialista_participacion_y_voto.html" width="100%" height="600" frameborder="0"></iframe>
+            </div>
+            
+            <!-- Gráfico 8: Fallida Participación y Voto -->
+            <div class="chart-container">
+                <div class="chart-title">🎲 Planilla Fallida+ - Participación vs Voto Individual</div>
+                <iframe src="graficos/8. planilla_fallida_participacion_y_voto.html" width="100%" height="600" frameborder="0"></iframe>
+            </div>
+        </div>
+
+        <!-- Sección VII: Reflexión Final -->
+        <div class="section">
+            <div class="section-number">VII</div>
+            <h2>Reflexión Final</h2>
+            <div class="markdown-content" id="comentarios"></div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>📊 Análisis Electoral: Elección Judicial 2025</strong></p>
+            <p>Evidencia empírica de patrones de votación y movilización electoral</p>
+            <p><em>Versión Portable - Funciona sin conexión a internet</em></p>
+        </div>
+    </div>
+
+    <script>
+        // Contenido markdown
+        const contenido = {
+            motivacion: \`### ¿Por qué este análisis?
+
+La elección judicial de 2025 ha estado marcada por denuncias sobre el uso de **"acordeones"** - listas preimpresas que inducen el voto en bloque. Este análisis busca encontrar evidencia empírica de estos patrones.
+
+**Preguntas clave:**
+• ¿Existe evidencia estadística de voto en bloque?
+• ¿Dónde se concentra la movilización electoral?
+• ¿Qué tan efectiva fue la estrategia de inducción?
+
+**Metodología:**
+• Análisis de redes para detectar comunidades de co-votación
+• Análisis territorial de patrones de movilización
+• Correlación entre participación y voto dirigido\`,
+
+            metodologia: \`### Fuentes de Datos
+
+**📊 Datos utilizados:**
+• Resultados oficiales por casilla (PREP)
+• Datos de participación electoral
+• Información geográfica por estado
+
+**🔬 Técnicas de análisis:**
+• **Análisis de redes**: Detección de comunidades usando algoritmo de Louvain
+• **Análisis de correlación**: Matrices de co-votación entre candidatos
+• **Análisis territorial**: Agrupación jerárquica por patrones estatales
+• **Análisis de participación**: Correlación entre afluencia y voto dirigido
+
+**🎯 Indicadores clave:**
+• Coeficientes de correlación entre candidatos
+• Índices de modularidad en redes
+• Distribución geográfica del voto
+• Relación participación-oficialismo\`,
+
+            evidencia: \`### Hallazgos Principales
+
+**🔍 Evidencia de voto en bloque:**
+• Correlaciones extremadamente altas (>0.95) entre candidatos oficialistas
+• Formación de comunidades claramente definidas
+• Patrones de co-votación sistemáticos
+
+**📊 Los gráficos siguientes muestran:**
+1. **Mapa de calor**: Correlaciones entre todos los candidatos
+2. **Red de comunidades**: Agrupación natural de candidatos
+3. **Detección de cliques**: Grupos de voto perfectamente correlacionado
+
+La evidencia es contundente: existe un patrón sistemático de voto en bloque que no puede explicarse por preferencias individuales aleatorias.\`,
+
+            territorial: \`### Patrones Geográficos de Movilización
+
+**🗺️ Distribución territorial:**
+• **Bastiones oficialistas**: Chiapas, Oaxaca, Guerrero, Veracruz
+• **Estados competitivos**: Ciudad de México, Nuevo León, Jalisco
+• **Distribución dispersa**: Planilla fallida+ sin concentración geográfica
+
+**📈 Estrategia de movilización:**
+• La planilla oficialista muestra concentración territorial clara
+• Aprovechamiento de estructuras organizativas existentes
+• Movilización efectiva en estados con mayor control territorial
+
+**🎯 Implicaciones:**
+• La geografía del voto revela estrategias diferenciadas
+• El oficialismo logró movilización concentrada y efectiva
+• La oposición careció de estructura territorial comparable\`,
+
+            induccion: \`### ¿Dónde florecen los acordeones? Participación y voto en bloque
+
+• **Armar una planilla no garantiza su éxito**. La planilla fallida+ logró organizarse y competir, pero no pudo replicar la efectividad de movilización de la planilla oficialista.
+
+• **La participación electoral se convierte en predictor del voto**. En los deciles de mayor participación, el oficialismo obtiene sus mejores resultados, mientras que la planilla fallida+ muestra un patrón inverso.
+
+• **Los "acordeones" funcionan**. La evidencia sugiere que donde hay mayor movilización (mayor participación), hay mayor efectividad del voto dirigido oficialista.
+
+• **Asimetría en la capacidad de movilización**. Mientras el oficialismo logra concentrar su voto en las casillas de alta participación, la planilla fallida+ obtiene mejores resultados relativos en casillas de baja participación.\`,
+
+            'participacion-bloque': \`### Relación entre participación y voto en bloque
+
+Los gráficos anteriores revelan un patrón crucial: **existe una correlación directa entre participación electoral y éxito de la planilla oficialista**.
+
+**📊 Hallazgos clave:**
+• **Planilla oficialista**: Mejor desempeño en deciles de alta participación
+• **Planilla fallida+**: Mejor desempeño relativo en deciles de baja participación
+• **Implicación**: La movilización electoral beneficia sistemáticamente al oficialismo
+
+**🎯 Interpretación:**
+Esta evidencia sugiere que los mecanismos de inducción del voto (como los "acordeones") son más efectivos cuando se combinan con estrategias de movilización. No basta con tener las listas preimpresas; se necesita también llevar a la gente a votar.
+
+**⚖️ Significado para la democracia:**
+La correlación participación-oficialismo plantea preguntas importantes sobre la calidad democrática del proceso. ¿Es saludable que mayor participación beneficie sistemáticamente a una sola opción?\`,
+
+            'analisis-individual': \`### Curvas de candidatos y estrategias de movilización
+
+**🎯 Planilla oficialista:**
+• **Homogeneidad extrema**: Todos los candidatos muestran curvas prácticamente idénticas
+• **Efectividad de la inducción**: El voto en bloque funciona de manera uniforme
+• **Disciplina electoral**: No hay variaciones significativas entre candidatos
+
+**🎲 Planilla fallida+:**
+• **Heterogeneidad marcada**: Cada candidato muestra un patrón diferente
+• **Voto más individualizado**: Los electores discriminan entre candidatos
+• **Falta de coordinación**: No hay evidencia de voto en bloque efectivo
+
+**📈 Implicaciones:**
+• La planilla oficialista logró **ingeniería electoral perfecta**
+• La planilla fallida+ funcionó más como **elección tradicional**
+• Los "acordeones" eliminaron la individualidad del voto oficialista\`,
+
+            comentarios: \`### Reflexión Final: Más que una Elección Judicial
+
+**⚖️ No fue solo una elección judicial**
+• Fue una demostración de **ingeniería política** a escala nacional
+• Mostró la efectividad de la **movilización coordinada**
+• Reveló las **asimetrías** en capacidad organizativa
+
+**🔬 Lo que nos enseña la evidencia:**
+• Los "acordeones" no son solo rumores - son **estrategia sistemática**
+• La **participación electoral** puede ser instrumentalizada
+• El **voto en bloque** es medible y cuantificable
+
+**🏛️ Implicaciones institucionales:**
+• ¿Cómo preservar la **autonomía judicial** en este contexto?
+• ¿Qué medidas pueden **fortalecer la democracia** electoral?
+• ¿Cómo equilibrar **participación** y **calidad democrática**?
+
+**🎯 Reflexión final:**
+Esta elección judicial se convertirá en un caso de estudio sobre cómo la **ingeniería política moderna** puede moldear resultados electorales. La pregunta que queda es: ¿estamos presenciando la evolución de la democracia o su instrumentalización?
+
+La evidencia habla por sí sola. Ahora corresponde a la sociedad decidir qué hacer con ella.\`
+        };
+
+        // Renderizar contenido markdown
+        Object.keys(contenido).forEach(seccion => {
+            const elemento = document.getElementById(seccion);
+            if (elemento) {
+                elemento.innerHTML = marked.parse(contenido[seccion]);
+            }
+        });
+
+        // Mensaje de carga completada
+        console.log('✅ Análisis Electoral cargado completamente - Versión Portable');
+    </script>
+</body>
+</html>

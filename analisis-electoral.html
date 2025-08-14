@@ -121,14 +121,27 @@
                     <iframe src="graficos/1. mapacalortriangular.html" width="100%" height="750" frameborder="0"></iframe>
                 </div>
                 
-                <!-- Transición: Del mapa de calor al análisis de redes -->
+                <!-- Detección de comunidades: Arquitectura del voto por planillas -->
                 <div class="markdown-content" style="margin: 40px 0; padding: 25px; background: #f1f4f8; border-left: 4px solid #2980b9; border-radius: 8px;">
-                    <h4 style="color: #2c3e50; margin-bottom: 15px; font-size: 1.2em;">De las correlaciones a las comunidades electorales</h4>
-                    <p style="margin-bottom: 12px; line-height: 1.6;">El mapa de calor anterior revela patrones de co-votación, pero para identificar con precisión las <strong>comunidades electorales</strong> y sus estructuras internas, es necesario aplicar algoritmos de detección de comunidades que permitan:</p>
+                    <h4 style="color: #2c3e50; margin-bottom: 15px; font-size: 1.2em;">Detección de comunidades: Arquitectura del voto por planillas</h4>
+                    
+                    <p style="margin-bottom: 15px; line-height: 1.6;"><strong>¿Qué se busca?</strong><br>
+                    Detectar si, además del bloque oficialista y la planilla "fallida", hubo otros grupos de candidaturas votadas en conjunto, como parte de "acordeones" o planillas alternativas.</p>
+                    
+                    <p style="margin-bottom: 15px; line-height: 1.6;"><strong>¿Cómo se identifican?</strong><br>
+                    Utilizando un método de análisis de redes, típico en estudios de redes sociales: la detección automática de comunidades.</p>
+                    
                     <ul style="margin: 15px 0; padding-left: 20px; line-height: 1.5;">
-                        <li style="margin-bottom: 8px;"><strong>Delimitar bloques de votación:</strong> Identificar grupos de candidatos con patrones de co-votación sistemáticos</li>
-                        <li style="margin-bottom: 8px;"><strong>Medir cohesión interna:</strong> Evaluar la intensidad de las conexiones dentro de cada comunidad</li>
-                        <li style="margin-bottom: 8px;"><strong>Visualizar relaciones:</strong> Representar gráficamente las conexiones entre candidatos y comunidades</li>
+                        <li style="margin-bottom: 8px;">Este algoritmo identifica grupos de nodos (candidaturas) densamente conectados entre sí, es decir, que fueron votados juntos de forma sistemática.</li>
+                        <li style="margin-bottom: 8px;">La base es la matriz de correlaciones entre candidaturas, construida a partir del voto por sección.</li>
+                    </ul>
+                    
+                    <p style="margin-bottom: 12px; line-height: 1.6;"><strong>¿Qué representa el grafo?</strong></p>
+                    <ul style="margin: 15px 0; padding-left: 20px; line-height: 1.5;">
+                        <li style="margin-bottom: 8px;">Cada nodo es una candidatura.</li>
+                        <li style="margin-bottom: 8px;">El tamaño del nodo indica qué tan central fue dentro de su grupo (cuántas veces fue votado junto a los demás).</li>
+                        <li style="margin-bottom: 8px;">Las líneas muestran la intensidad de co-voto entre pares.</li>
+                        <li style="margin-bottom: 8px;">Los colores representan comunidades detectadas automáticamente.</li>
                     </ul>
                 </div>
                 
@@ -137,16 +150,42 @@
                     <iframe src="graficos/2. grafo_comunidades_SCJN.html" width="100%" height="800" frameborder="0" style="min-width: 1400px; overflow-x: auto;"></iframe>
                 </div>
                 
-                <!-- Análisis adicional: Estructuras Densas y Cliques -->
+                <!-- ¿Qué revela este enfoque? -->
                 <div class="markdown-content" style="margin: 40px 0; padding: 30px; background: #f8f9fa; border-left: 4px solid #3498db; border-radius: 8px;">
-                    <h4 style="color: #2c3e50; margin-bottom: 20px; font-size: 1.3em;">Análisis Complementario: Estructuras Densas y Cliques</h4>
-                    <p style="margin-bottom: 15px; line-height: 1.7;">El siguiente análisis profundiza en la identificación de <strong>estructuras densas</strong> y <strong>cliques</strong> dentro de la red de co-votación judicial, permitiendo:</p>
-                    <ul style="margin: 20px 0; padding-left: 25px; line-height: 1.6;">
-                        <li style="margin-bottom: 10px;"><strong>Detección de subgrupos altamente conectados:</strong> Identificación de candidatos que forman núcleos de votación conjunta</li>
-                        <li style="margin-bottom: 10px;"><strong>Análisis de densidad de conexiones:</strong> Medición de la intensidad de las relaciones de co-votación</li>
-                        <li style="margin-bottom: 10px;"><strong>Validación de patrones de inducción:</strong> Confirmación estadística de los mecanismos de coordinación electoral</li>
-                        <li style="margin-bottom: 10px;"><strong>Mapeo de influencia electoral:</strong> Identificación de nodos centrales en la red de votación</li>
+                    <h4 style="color: #2c3e50; margin-bottom: 20px; font-size: 1.3em;">¿Qué revela este enfoque?</h4>
+                    
+                    <p style="margin-bottom: 15px; line-height: 1.7;">No parte de suposiciones sobre cuántas planillas hubo: los agrupamientos emergen naturalmente de los datos.</p>
+                    
+                    <p style="margin-bottom: 12px; line-height: 1.6; font-weight: 600;">Permite identificar:</p>
+                    <ul style="margin: 15px 0; padding-left: 25px; line-height: 1.6;">
+                        <li style="margin-bottom: 10px;">Planillas no oficiales, que también actuaron de forma coordinada aunque no hayan ganado.</li>
+                        <li style="margin-bottom: 10px;">La cohesión interna de cada planilla (¿siempre votadas juntas o no?).</li>
+                        <li style="margin-bottom: 10px;">La estructura interna del bloque oficialista, como su jerarquía de influencia o coordinación.</li>
                     </ul>
+                    
+                    <h5 style="color: #2c3e50; margin: 25px 0 15px 0; font-size: 1.1em;">Yasmín Esquivel vs. Hugo Aguilar: ¿Influencia colectiva o arrastre individual?</h5>
+                    
+                    <div style="margin: 20px 0; padding: 20px; background: #e8f4f8; border-radius: 6px;">
+                        <p style="margin-bottom: 12px; line-height: 1.6;"><strong>Yasmín Esquivel</strong> fue el nodo más central dentro del bloque oficialista.</p>
+                        <p style="margin-bottom: 12px; line-height: 1.6;">Esto significa que su candidatura fue votada de forma altamente consistente junto a las otras del bloque. En términos de red, actuó como un núcleo del acordeón oficialista: cuando alguien votaba por el bloque, casi siempre incluía a Esquivel.</p>
+                        <p style="margin-bottom: 0; line-height: 1.6;">Su centralidad refleja <strong>coordinación grupal</strong>: fue parte clave del voto inducido en planilla.</p>
+                    </div>
+                    
+                    <div style="margin: 20px 0; padding: 20px; background: #fff3e0; border-radius: 6px;">
+                        <p style="margin-bottom: 12px; line-height: 1.6;"><strong>Hugo Aguilar</strong>, en contraste, fue el más votado en términos individuales, pero menos central en la red del bloque.</p>
+                        <p style="margin-bottom: 12px; line-height: 1.6;">Esto indica que recibió muchos votos fuera de la lógica de voto en bloque. Puede haber captado apoyos más transversales o autónomos, ajenos al acordeón, o haber figurado en acordeones parciales que no incluían al resto del oficialismo.</p>
+                        <p style="margin-bottom: 0; line-height: 1.6;">Su éxito no dependío tanto de su inserción estructural en la red, sino de un <strong>arrastre propio</strong>.</p>
+                    </div>
+                    
+                    <div style="margin: 25px 0; padding: 20px; background: #f0f8ff; border-left: 4px solid #4a90e2; border-radius: 6px;">
+                        <h6 style="color: #2c3e50; margin-bottom: 12px; font-size: 1em;">🧠 ¿Qué revela esta diferencia?</h6>
+                        <p style="margin-bottom: 12px; line-height: 1.6;">Este contraste muestra cómo una elección sin partidos formales puede estar organizada en torno a estructuras informales de coordinación (como las planillas), pero también dejar espacio para figuras con tracción individual.</p>
+                        <ul style="margin: 15px 0; padding-left: 20px; line-height: 1.5;">
+                            <li style="margin-bottom: 8px;">Esquivel es la evidencia del <strong>voto organizado en bloque</strong>.</li>
+                            <li style="margin-bottom: 8px;">Aguilar es la evidencia de que el <strong>voto estratégico o carismático individual</strong> también jugó un rol.</li>
+                        </ul>
+                        <p style="margin-bottom: 0; line-height: 1.6; font-style: italic;">Ambos ganaron, pero por razones estructuralmente distintas: una por arquitectura de red; el otro, por voto directo y selectivo.</p>
+                    </div>
                 </div>
                 
                 <div class="chart-container">

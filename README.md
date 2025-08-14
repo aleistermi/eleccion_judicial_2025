@@ -1,101 +1,71 @@
-# 📊 Generador de Reportes HTML Interactivos
+# Análisis Electoral: Elección Judicial 2025
 
-Este proyecto te permite crear reportes HTML autocontenidos que combinan:
-- ✅ Gráficos interactivos (Plotly.js)
-- ✅ Contenido narrativo en Markdown
-- ✅ Diseño profesional y responsivo
-- ✅ Un solo archivo HTML para compartir fácilmente
+## Análisis Empírico de Patrones de Votación
 
-## 📁 Archivos incluidos
+Este proyecto presenta un análisis estadístico y visual de los patrones de votación en la elección judicial de 2025, con especial énfasis en la detección de voto en bloque y el uso de "acordeones" como mecanismo de inducción electoral.
 
-### `reporte-interactivo.html`
-- **Ejemplo completo** con 3 gráficos y contenido de muestra
-- Diseño profesional con secciones bien estructuradas
-- Listo para usar como inspiración
+## Ver el Análisis
 
-### `template-personalizable.html`
-- **Template simple** para personalizar con tus datos
-- Comentarios claros para facilitar la edición
-- Estructura básica que puedes expandir
+**[Ver análisis completo](https://aleistermi.github.io/eleccion_judicial_2025/)**
 
-## 🚀 Cómo usar
+## Contenido del Análisis
 
-### Opción 1: Usar el template personalizable
-1. Abre `template-personalizable.html` en tu editor
-2. Busca las secciones marcadas con "PERSONALIZA AQUÍ"
-3. Modifica:
-   - **Contenido Markdown**: Cambia los textos en `contenidoMarkdown`
-   - **Datos de gráficos**: Actualiza los arrays `x` e `y` con tus datos
-   - **Títulos y etiquetas**: Personaliza títulos y nombres de ejes
+### I. Motivación
+- Contexto de la elección judicial
+- Denuncias sobre el uso de acordeones
+- Necesidad de análisis empírico
 
-### Opción 2: Partir del ejemplo completo
-1. Copia `reporte-interactivo.html` con un nuevo nombre
-2. Modifica las secciones que necesites
-3. Reemplaza los datos de ejemplo con los tuyos
+### II. Datos y Metodología
+- Fuentes de información
+- Técnicas de análisis de redes
+- Detección de comunidades electorales
 
-## 📈 Tipos de gráficos soportados
+### III. Evidencia Empírica
+- Visualización del voto en bloque
+- Mapas de calor y dendrogramas
+- Identificación de planillas
 
-Con Plotly.js puedes crear:
-- **Líneas**: `type: 'scatter', mode: 'lines'`
-- **Barras**: `type: 'bar'`
-- **Pastel**: `type: 'pie'`
-- **Dispersión**: `type: 'scatter'`
-- **Histogramas**: `type: 'histogram'`
-- **Mapas de calor**: `type: 'heatmap'`
-- **Y muchos más...**
+### IV. Análisis Territorial
+- Patrones geográficos de movilización
+- Bastiones oficialistas vs. distribución dispersa
+- Estados clave: Chiapas, Oaxaca, Guerrero
 
-## ✏️ Markdown soportado
+### V. Participación y Voto en Bloque
+- Correlación participación-oficialismo
+- Análisis por deciles de participación
+- Comparación entre planillas
 
-Puedes usar toda la sintaxis de Markdown:
-```markdown
-# Títulos
-## Subtítulos
-**Negritas** y *cursivas*
-- Listas
-- Con viñetas
-1. Listas numeradas
-> Citas importantes
-`código inline`
-[Enlaces](https://ejemplo.com)
-```
+### VI. Reflexión Final
+- Más que una elección judicial
+- Ingeniería política y democracia
+- Implicaciones institucionales
 
-## 🎨 Personalización de estilos
+## Metodología
 
-Para cambiar colores y estilos, modifica la sección `<style>` en el HTML:
-- **Color principal**: Busca `#007bff` y cámbialo
-- **Fuentes**: Modifica `font-family`
-- **Espaciado**: Ajusta `padding` y `margin`
+- **Análisis de redes**: Detección de comunidades de co-votación
+- **Análisis territorial**: Patrones geográficos de movilización
+- **Análisis de participación**: Correlación entre afluencia y voto dirigido
+- **Visualización interactiva**: Gráficos dinámicos con Plotly
 
-## 📤 Compartir tu reporte
+## Hallazgos Principales
 
-Una vez terminado:
-1. **Guarda** el archivo HTML
-2. **Abre** en cualquier navegador para verificar
-3. **Comparte** el archivo HTML directamente
-   - Por email como adjunto
-   - En Google Drive, Dropbox, etc.
-   - En cualquier servidor web
+1. **Voto en bloque sistemático**: Evidencia estadística de coordinación electoral
+2. **Eficacia de acordeones**: Correlación precisa entre participación y oficialismo
+3. **Asimetría territorial**: Movilización concentrada vs. distribución dispersa
+4. **Ingeniería política**: Ejecución casi perfecta de estrategia nacional
 
-## 💡 Tips útiles
+## Tecnologías
 
-- **Datos grandes**: Si tienes muchos datos, considera usar muestras representativas
-- **Rendimiento**: Los gráficos se cargan desde CDN, necesitas internet
-- **Compatibilidad**: Funciona en todos los navegadores modernos
-- **Responsive**: Se adapta automáticamente a móviles y tablets
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Visualización**: Plotly.js, D3.js
+- **Análisis**: Python, NetworkX, Pandas
+- **Hosting**: GitHub Pages
 
-## 🔧 Ejemplo de personalización rápida
+## Licencia
 
-Para cambiar los datos del primer gráfico en el template:
+Este análisis se comparte con fines académicos y de transparencia democrática.
 
-```javascript
-// Cambia estos valores por los tuyos
-const datos1 = [{
-    x: ['Ene', 'Feb', 'Mar', 'Abr', 'May'],  // Tus etiquetas
-    y: [100, 150, 120, 180, 200],           // Tus valores
-    type: 'scatter',
-    mode: 'lines+markers',
-    name: 'Mis Ventas'  // Tu nombre de serie
-}];
-```
+---
 
-¡Listo para crear reportes profesionales! 🎉
+**Autor**: Aleister Montfort 2025  
+**Última actualización**: Agosto 14 2025

@@ -60,7 +60,21 @@ Este proyecto presenta un análisis estadístico y visual de los patrones de vot
 - **Visualización**: Plotly.js, D3.js
 - **Análisis**: Python, NetworkX, Pandas
 - **Hosting**: GitHub Pages
+## Estructura del Repositorio
 
+```
+eleccion_judicial_2025/
+├── index.html                 # Página principal
+├── README.md                  # Documentación
+└── graficos/                  # Visualizaciones
+    ├── 1. mapa_calor.html
+    ├── 2.1cliques_SCJN.html
+    ├── 3. dendrograma.html
+    ├── 4. treemap.html
+    ├── 5. oficialista_por_decil_participacion.html
+    ├── 6. fallida_por_decil_participacion.html
+    ├── 7. planilla_oficialista_participacion_y_voto.html
+    └── 8. planilla_fallida_participacion_y_voto.html
 ## Licencia
 
 Este análisis se comparte con fines académicos y de transparencia democrática.

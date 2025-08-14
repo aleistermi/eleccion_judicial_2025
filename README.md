@@ -12,7 +12,7 @@ Este proyecto presenta un análisis estadístico y visual de los patrones de vot
 
 ### I. Motivación
 - Contexto de la elección judicial
-- Denuncias sobre el uso de acordeones
+- Uso de acordeones
 - Necesidad de análisis empírico
 
 ### II. Datos y Metodología
@@ -28,7 +28,7 @@ Este proyecto presenta un análisis estadístico y visual de los patrones de vot
 ### IV. Análisis Territorial
 - Patrones geográficos de movilización
 - Bastiones oficialistas vs. distribución dispersa
-- Estados clave: Chiapas, Oaxaca, Guerrero
+- Estados clave
 
 ### V. Participación y Voto en Bloque
 - Correlación participación-oficialismo

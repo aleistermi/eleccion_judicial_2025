@@ -130,7 +130,7 @@
                 
                 <!-- Detección de comunidades: Arquitectura del voto por planillas -->
                 <div class="markdown-content" style="margin: 40px 0; padding: 25px; background: #f1f4f8; border-left: 4px solid #2980b9; border-radius: 8px;">
-                    <h4 style="color: #2c3e50; margin-bottom: 15px; font-size: 1.2em;">Detección de comunidades: Arquitectura del voto por planillas</h4>
+                    <h4 style="color: #2c3e50; margin-bottom: 15px; font-size: 1.2em;">Planillas en red: explorando la arquitectura del voto coordinado</h4>
                     
                     <p style="margin-bottom: 15px; line-height: 1.6;"><strong>¿Qué se busca?</strong><br>
                     Detectar si, además del bloque oficialista y la planilla "fallida", hubo otros grupos de candidaturas votadas en conjunto, como parte de "acordeones" o planillas alternativas.</p>
@@ -141,6 +141,12 @@
                     <ul style="margin: 15px 0; padding-left: 20px; line-height: 1.5;">
                         <li style="margin-bottom: 8px;">Este algoritmo identifica grupos de nodos (candidaturas) densamente conectados entre sí, es decir, que fueron votados juntos de forma sistemática.</li>
                         <li style="margin-bottom: 8px;">La base es la matriz de correlaciones entre candidaturas, construida a partir del voto por sección.</li>
+                    </ul>
+                    <p style="margin-bottom: 15px; line-height: 1.6;"><strong>Comunidades y centralidad</strong><br>
+                    
+                    <ul style="margin: 15px 0; padding-left: 20px; line-height: 1.5;">
+                        <li style="margin-bottom: 8px;">Una vez identificadas las comunidades, el análisis se centró en su estructura interna. ¿Quiénes ocupan el centro de cada grupo? ¿Quién ancló el voto en bloque? Para responderlo, medimos la centralidad de cada candidatura: qué tan conectada está dentro de su propia planilla. Quienes concentran más vínculos suelen ser quienes definieron el arrastre del grupo.Este algoritmo identifica grupos de nodos (candidaturas) densamente conectados entre sí, es decir, que fueron votados juntos de forma sistemática.</li>
+                        <li style="margin-bottom: 8px;">Pero el análisis también revela lo opuesto: dentro de cada comunidad es posible detectar a quienes tienen menor centralidad, es decir, candidaturas con menos conexiones pero que se beneficiaron de ir en planilla. Ellos fueron arrastrados por la fuerza del grupo, obteniendo respaldo sin ser el eje de coordinación.</li>
                     </ul>
                     
                     <p style="margin-bottom: 12px; line-height: 1.6;"><strong>¿Qué representa el grafo?</strong></p>
@@ -181,7 +187,7 @@
                     <div style="margin: 20px 0; padding: 20px; background: #fff3e0; border-radius: 6px;">
                         <p style="margin-bottom: 12px; line-height: 1.6;"><strong>Hugo Aguilar</strong>, en contraste, fue el más votado en términos individuales, pero menos central en la red del bloque.</p>
                         <p style="margin-bottom: 12px; line-height: 1.6;">Esto indica que recibió muchos votos fuera de la lógica de voto en bloque. Puede haber captado apoyos más transversales o autónomos, ajenos al acordeón, o haber figurado en acordeones parciales que no incluían al resto del oficialismo.</p>
-                        <p style="margin-bottom: 0; line-height: 1.6;">Su éxito no dependío tanto de su inserción estructural en la red, sino de un <strong>arrastre propio</strong>.</p>
+                        <p style="margin-bottom: 0; line-height: 1.6;">Su éxito no dependió tanto de su inserción estructural en la red, sino de un <strong>arrastre propio</strong>.</p>
                     </div>
                     
                     <div style="margin: 25px 0; padding: 20px; background: #f0f8ff; border-left: 4px solid #4a90e2; border-radius: 6px;">
@@ -216,7 +222,7 @@
                 <!-- Análisis territorial entre gráficos -->
                 <div class="markdown-content" style="margin: 40px 0; padding: 25px; background: #f1f4f8; border-left: 4px solid #2980b9; border-radius: 8px;">
                     <h4 style="color: #2c3e50; margin-bottom: 15px; font-size: 1.2em;">Dos Modelos de Coordinación Electoral</h4>
-                    <p style="margin-bottom: 12px; line-height: 1.6;"><strong>En resumen:</strong> La planilla oficialista se apoyó en enclaves regionales bien definidos y exhibe una caída gradual en el porcentaje de votos por entidad, lo que apunta a una movilización territorial más uniforme y sostenida. En cambio, la planilla fallida+ muestra una disminución abrupta conforme se recorren las entidades, lo cual sugiere una estrategia más focalizada y geográficamente acotada.</p>
+                    <p style="margin-bottom: 12px; line-height: 1.6;"><strong>En resumen:</strong> La planilla oficialista se apoyó en enclaves regionales bien definidos y exhibe una caída más "gradual" en el porcentaje de votos por entidad, lo que apunta a una movilización territorial más uniforme y sostenida. En cambio, la planilla fallida+ muestra una disminución abrupta conforme se recorren las entidades, lo cual sugiere una estrategia más focalizada y geográficamente acotada.</p>
                     <p style="margin-bottom: 12px; line-height: 1.6;">Esta divergencia en la distribución territorial refleja dos modelos de coordinación electoral: uno extensivo y disciplinado, el otro fragmentado y débilmente articulado.</p>
                 </div>
                 
@@ -235,7 +241,7 @@
                     <li><strong>Armar una planilla no garantiza el triunfo</strong>: para que una lista de candidaturas gane es necesario que los votantes <strong>acudan a las urnas</strong> y marquen la planilla completa.</li>
                     <li><strong>La participación es un factor clave</strong>: si ciertos bloques concentran más apoyo en zonas con alta participación, dentro de un contexto general de abstencionismo, esto puede ser indicio  de movilización territorial dirigida.</li>
                     <li><strong>La dimensión geográfica ya ofrecía indicios</strong>: algunos estados —como Chiapas, Oaxaca y Guerrero— destacaron como bastiones del oficialismo, lo que puede sugerir la existencia de enclaves de voto inducido.</li>
-                    <li><strong>Co-ocurrencia entre participación y voto por planilla</strong>:  si hay una asociación sistemática entre alta participación y selección de bloques cerrados, eso ayuda a entender cómo operaron los mecanismos de inducción del voto en esta elección.</li>
+                    <li><strong>Co-ocurrencia entre participación y voto por planilla</strong>:  si existe una asociación sistemática entre alta participación y voto por acordeones, eso nos ayudaría a <strong>entender cómo operaron los mecanismos de inducción del voto</strong> en esta elección</strong>.</li>
                     <li>Los siguientes gráficos exploran si el voto en bloque se apoyó de las secciones con mayor afluencia a las urnas.</li>
                 </ul>
                 <div class="chart-container">
@@ -246,24 +252,8 @@
                             style="border: none; border-radius: 8px;"></iframe>
                 </div>
                 
-                <!-- Relación entre participación y voto en bloque -->
-                <div style="margin: 40px 0; padding: 25px; background: #f8f9fa; border-left: 4px solid #e74c3c; border-radius: 8px;">
-                    <h4>Relación entre participación y voto en bloque</h4>
-                    
-                    <h5>Planilla Oficialista</h5>
-                    <ul>
-                        <li><strong>Correlación positiva con participación:</strong> A medida que aumenta la participación por sección, también crece el voto en bloque por la planilla oficialista.</li>
-                        <li><strong>Pico de apoyo en el decil X:</strong> En las secciones con mayor participación, el apoyo al bloque oficialista supera el 40%.</li>
-                        <li><strong>Indicios de movilización dirigida:</strong> Este patrón sugiere que en zonas de alta participación pudo haber habido una operación territorial para promover el voto completo por la planilla, más allá de una preferencia espontánea.</li>
-                    </ul>
-                    
-                    <h5>Planilla Fallida+</h5>
-                    <ul>
-                        <li><strong>Apoyo concentrado en zonas de baja participación:</strong> Su respaldo es mayor en los primeros deciles y disminuye sistemáticamente conforme crece la participación.</li>
-                        <li><strong>Desplome en el decil X:</strong> En las secciones más movilizadas, su apoyo es mínimo.</li>
-                        <li><strong>Patrón disperso sin coordinación territorial clara:</strong> El comportamiento sugiere un respaldo más libre, sin una infraestructura visible de movilización o control territorial.</li>
-                    </ul>
-                </div>
+                <!-- Relación entre participación y voto en bloque - Planilla Oficialista -->
+                <div class="markdown-content" id="induccion-analisis-content" style="margin: 40px 0; padding: 25px; background: #f8f9fa; border-left: 4px solid #e74c3c; border-radius: 8px;"></div>
                 
                 <div class="chart-container">
                     <div class="chart-title">Voto Planilla Fallida por Decil de Participación</div>
@@ -272,6 +262,9 @@
                             width="100%" height="600" frameborder="0" 
                             style="border: none; border-radius: 8px;"></iframe>
                 </div>
+                
+                <!-- Análisis Planilla Fallida -->
+                <div class="markdown-content" id="planilla-fallida-content" style="margin: 40px 0; padding: 25px; background: #f1f4f8; border-left: 4px solid #2980b9; border-radius: 8px;"></div>
             </section>
             
             <!-- Separador -->
@@ -307,10 +300,10 @@
                 <h3></h3>
                 <ul>
                     <li><strong>No fue solo una elección judicial</strong>: Fue también una prueba de fuerza del régimen en consolidación. El proceso reveló la capacidad del régimen para diseñar, coordinar y ejecutar una estrategia nacional con eficacia.</li>
-                    <li><strong>Un experimento exitoso de ingeniería política</strong>: Se construyó un mecanismo —las planillas oficiales— y se puso en marcha con una estructura de movilización territorial. Los resultados muestran una ejecución casi perfecta: nombres replicados masivamente, voto en bloque inducido, y una correlación precisa entre participación y apoyo al oficialismo.</li>
+                    <li><strong>Un experimento exitoso de ingeniería electoral</strong>: Se construyó un mecanismo —las planillas oficiales— y se puso en marcha con una estructura de movilización territorial. Los resultados muestran una ejecución casi perfecta: nombres replicados masivamente, voto en bloque inducido, y una correlación positiva entre participación y apoyo al oficialismo.</li>
                     <li><strong>Desigualdad estructural entre aspirantes</strong>: Lejos de una contienda abierta, el patrón observado apunta a un proceso cerrado, sin condiciones reales de equidad ni competencia.</li>
                     <li><strong>Un riesgo a la institucionalidad electoral</strong>: Participación mínima, resultados anticipados, árbitro complaciente. Se mantuvieron las formas —votar, contar, publicar resultados— pero sin incertidumbre, y con reglas opacas para los jugadores.</li>
-                    <li><strong>Democracia invertida</strong>: Como diría Przeworski, la democracia implica "reglas ciertas, resultados inciertos". Aquí ocurrió lo opuesto: el procedimiento fue previsible, pero las reglas, inciertas para los contendientes.</li>
+                    <li><strong>Democracia invertida</strong>: Como diría Przeworski, la democracia implica "reglas ciertas, resultados inciertos". Aquí ocurrió lo opuesto: el resultado era previsible y sin incertidumbre, y las reglas inciertas para los contendientes.</li>
                     <li><strong>Lo más inquietante</strong>: No solo funcionó el mecanismo, sino que el árbitro, en lugar de defender el terreno de juego, aprendió a mirar hacia otro lado.</li>
                 </ul>
             </section>
@@ -329,11 +322,11 @@
         
         // Contenido Markdown (puedes editarlo según tu análisis)
         const contenido = {
-            motivacion: `# El contexto de la elección judicial\n\nAntes de la publicación de este trabajo, en el debate público en torno a la elección judicial de 2025 :\n\n1.	Existían **denuncias sobre el uso de "acordeones"**. Sin embargo, no se había realizado una cuantificación ni visualización sistemática de su impacto en los patrones de votación.\n\n2.	El análisis empírico disponible había **enfatizado la "pluralidad" dentro del bloque oficialista**, destacando la presencia de competencia interna entre candidaturas promovidas por el gobierno. Esta narrativa sugería una elección con diversidad y margen de decisión sin centrarse en lo relevante: el efecto de los acordeones en el resultado final, con la consecuente **desligitimación del proceso**.\n\n3.	Al interior del Instituto Nacional Electoral (INE), un grupo de cinco consejeros —encabezados por Arturo Castillo— había denunciado el uso de acordeones. **A pesar de contar con evidencia, sus alertas no prosperaron**\n\n<div class="info-box"><p>Este análisis busca dejar un <strong>testimonio cívico</strong> sobre cómo mecanismos informales de coordinación distorsionaron un proceso que debía ser transparente y equitativo, comprometiendo de fondo su legitimidad democrática.</p></div>`,
+            motivacion: `# El contexto de la elección judicial\n\nAntes de la publicación de este trabajo, en el debate público en torno a la elección judicial de 2025 :\n\n1.	Existían **denuncias sobre el uso de "acordeones"**. Sin embargo, no se había realizado una cuantificación ni visualización sistemática de su impacto en los patrones de votación.\n\n2.	El análisis empírico disponible había **enfatizado la "pluralidad" dentro del bloque oficialista**, destacando la presencia de competencia interna entre candidaturas promovidas por el gobierno. Esta narrativa sugería una elección con diversidad y margen de decisión sin centrarse en lo relevante: **el efecto de los acordeones en el resultado final**, con la consecuente desligitimación del proceso.\n\n3.	Al interior del Instituto Nacional Electoral (INE), un grupo de cinco consejeros —encabezados por Arturo Castillo— había denunciado el uso de acordeones. **A pesar de contar con evidencia, sus denuncias no prosperaron**.\n\n<div class="info-box"><p>Este análisis busca dejar un <strong>testimonio cívico</strong> sobre cómo mecanismos informales de coordinación distorsionaron un proceso que debía ser transparente y equitativo, comprometiendo de fondo su <strong>legitimidad democrática</strong>.</p></div>`,
             
-            datos: `Este análisis se inscribe en una conversación en curso sobre la operación de planillas en la elección judicial. Trabajos recientes, como los de José Ramón Cossío y Javier Aparicio, ya han advertido sobre los patrones de co-votación y la circulación de "acordeones". Este estudio ofrece un abordaje empírico y visual que permite dimensionar el fenómeno con otra perspectiva.\n\n### Contribuciones empíricas principales:\n\n1. **Visualización del voto en bloque**: Mapas de calor, dendogramas y grafos que muestran con claridad la agrupación de candidaturas votadas conjuntamente en decenas de miles de secciones.\n\n2. **Estimación conservadora del número de planillas**: se identifican al menos 22 agrupamientos cerrados de votación, distintos del bloque oficialista ganador, lo que sugiere una operación de voto inducido más amplia y diversa de lo que se ha reportado hasta ahora.\n\n3. **Caracterización de las comunidades electorales**: se analizan no solo los bloques de co-votación, sino su intensidad interna, cohesión estructural y relaciones entre ellos, revelando una arquitectura compleja del voto.\n\n4. **Evidencia de movilización selectiva**: a pesar de los bajos niveles generales de participación, las secciones con mayor participación tienden a coincidir con aquellas donde se votó por listas completas, lo que sugiere una estrategia de movilización territorial dirigida —una huella estadística del uso eficaz de acordeones.\n\n### Otras dimensiones exploradas:\n\n • **Territorialidad del voto**: patrones regionales que reflejan redes de apoyo por planilla y candidato.\n\n• **Competencia interna dentro del oficialismo y planillas alternativas**: que revela jerarquías dentro del bloque oficialista y la existencia de agrupamientos alternativos con estructuras propias`,
+            datos: `Este análisis se inscribe en una conversación en curso sobre la operación de planillas en la elección judicial. Trabajos recientes, como los de **José Ramón Cossío** y **Javier Aparicio**, ya han advertido sobre los patrones de co-votación y la circulación de "acordeones". Este estudio ofrece un abordaje empírico y visual que permite dimensionar el fenómeno con otra perspectiva.\n\n### Contribuciones principales:\n\n1. **Visualización del voto en bloque**: Mapas de calor, dendogramas y grafos que revelan con claridad patrones de co-votación en miles de secciones, haciendo visible la existencia de planillas.\n\n2. **Estimación conservadora del número de planillas**: se identifican al menos 22 agrupamientos cerrados de votación, distintos del bloque oficialista ganador, lo que sugiere una operación de voto inducido más amplia y diversa de lo que se ha reportado hasta ahora.\n\n3. **Caracterización de las comunidades electorales**: Análisis de la intensidad, cohesión y relaciones entre bloques de co-votación, que revela una estructura del voto más compleja\n\n4. **Evidencia de movilización selectiva**: a pesar de los bajos niveles de participación, las secciones con mayor participación tienden a coincidir con aquellas donde se votó por listas completas, lo que sugiere una estrategia de movilización territorial dirigida —una huella estadística del uso eficaz de acordeones.\n\n### Otras dimensiones exploradas:\n\n • **Territorialidad del voto**: patrones regionales que reflejan redes de apoyo por planilla y candidato.\n\n• **Competencia interna dentro del oficialismo y planillas alternativas**: que revela jerarquías dentro del bloque oficialista y la existencia de agrupamientos alternativos con estructuras propias`,
             
-            evidencia: `### ¿Cómo se detectan los bloques de co-votación?\n\n• **Construcción de la matriz de correlaciones**: A partir de los datos de votación por sección, se calculó qué tan frecuentemente eran seleccionadas juntas las candidaturas, generando una matriz de correlaciones entre todos los pares.\n\n• **Agrupamiento por similitud**: Esta matriz se reordenó utilizando un algoritmo que detecta agrupamientos naturales —clusters—, identificando patrones estadísticos de co-votación.\n\n• **Visualización mediante mapa de calor**: El resultado se presenta como un mapa de calor, donde los tonos más oscuros indican mayor afinidad entre candidaturas. Las concentraciones diagonales revelan posibles planillas o bloques organizados.`,
+            evidencia: `### ¿Cómo se detectan los bloques de co-votación?\n\n• **Construcción de la matriz de correlaciones**: A partir de los datos de votación por sección, se calculó qué tan frecuentemente eran seleccionadas juntas las candidaturas, generando una matriz de correlaciones entre todos los pares.\n\n• **Agrupamiento por similitud**: Esta matriz se reordenó utilizando un algoritmo que detecta agrupamientos naturales —clusters—. Este reordenamiento es lo que permite que en el  mapa de calor, los bloques de co-votación aparezcan como cuadrantes oscuros agrupados, en lugar de estar dispersos. Es como si organizáramos las piezas del rompecabezas para que las formas aparezcan con claridad.\n\n• **Visualización**: El resultado se presenta como un mapa de calor, donde los tonos más oscuros indican mayor afinidad entre candidaturas.`,
             
             origen: `• Estados históricamente alineados con el oficialismo reciente —como Chiapas, Oaxaca y Guerrero— figuran entre los principales bastiones del voto por la planilla oficialista. Después de su "voto bastión", el voto por el oficialismo decrece con mayor gradualidad, lo que sugiere una movilización territorial más extensa y uniforme, sostenida por redes más amplias de coordinación\n\n• En contraste, el voto por la planilla fallida+ muestra una distribución  proporcional al tamaño poblacional de las entidades federativas. Esta composición territorial sugiere una lógica distinta: el porcentaje de votación pierde intensidad de manera abrupta, lo que indica una estrategia más focalizada y limitada geográficamente\n\n`,
         
@@ -349,19 +342,18 @@
 
 • **Sin afirmar causalidad**, una asociación consistente entre participación alta y voto por planilla puede ayudar a entender mejor cómo funcionó la inducción del voto en esta elección.`,
                 
-            'analisis-individual': `### Análisis por Candidato\n\n• **Curvas más planas** sugieren una base de apoyo relativamente estable, menos dependiente de la movilización activa. En estos casos, es posible que el voto provenga de un núcleo más firme o convencido: lo que algunos podrían llamar "voto duro".\n\n• **Curvas con pendiente pronunciada** indican que el apoyo crece sustancialmente en las secciones con mayor participación. Esto sugiere que ciertos candidatos fueron más exitosos en movilizar votantes, posiblemente por contar con mejor estructura, visibilidad o respaldo local.\n\n• **Estas variaciones** apuntan a la posibilidad de que, dentro de la misma planilla, algunos perfiles hayan desplegado estrategias diferenciadas de movilización —o recibido apoyos diferenciados en el territorio—, lo que añade una capa de complejidad al análisis del voto en bloque.`,
+            'analisis-individual': `Cada barra representa el porcentaje de votos que obtuvo una candidatura en secciones con distintos niveles de participación (de menor a mayor). Lo que observamos es lo siguiente:\n\n• **Apoyos más estables** (curvas más planas) sugieren una base de apoyo relativamente homogéneo, menos dependiente de la movilización activa. En estos casos, es posible que el voto provenga de un núcleo más firme o convencido: lo que algunos podrían llamar "voto duro".\n\n• **Candidaturas con aumento creciente** (Curvas con pendiente pronunciada) indican que el apoyo crece sustancialmente en las secciones con mayor participación. Esto sugiere que **ciertos candidatos fueron más exitosos en movilizar votantes**, posiblemente por contar con mejor estructura, visibilidad o respaldo local.\n\n• **Estas variaciones** apuntan a la posibilidad de que, dentro de la misma planilla, algunos perfiles hayan desplegado estrategias diferenciadas de movilización —o recibido apoyos diferenciados en el territorio—, lo que añade una capa de complejidad al análisis del voto en bloque.`,
             
-            'induccion-analisis': `#### Relación entre participación y voto en bloque
+            'induccion-analisis': `#### Participación y voto por el bloque oficialista
 
-##### Planilla Oficialista
 
 • **Correlación positiva con participación:** A medida que aumenta la participación por sección, también crece el voto en bloque por la planilla oficialista.
 
 • **Pico de apoyo en el decil X:** En las secciones con mayor participación, el apoyo al bloque oficialista supera el 40%.
 
-• **Indicios de movilización dirigida:** Este patrón sugiere que en zonas de alta participación pudo haber habido una operación territorial para promover el voto completo por la planilla, más allá de una preferencia espontánea.
+• **Indicios de movilización dirigida:** Este patrón sugiere que en zonas de alta participación pudo haber habido una operación territorial para promover el voto completo por la planilla, más allá de una preferencia espontánea.`,
 
-##### Planilla Fallida+
+            'planilla-fallida': `#### Participación y voto por la Planilla Fallida+
 
 • **Apoyo concentrado en zonas de baja participación:** Su respaldo es mayor en los primeros deciles y disminuye sistemáticamente conforme crece la participación.
 
@@ -373,7 +365,7 @@
 
 • **No fue solo una elección judicial**: Fue también una prueba de fuerza del régimen en consolidación. El proceso reveló la capacidad del régimen para diseñar, coordinar y ejecutar una estrategia nacional con eficacia.
 
-• **Un experimento exitoso de ingeniería política**: Se construyó un mecanismo —las planillas oficiales— y se puso en marcha con una estructura de movilización territorial. Los resultados muestran una ejecución casi perfecta: nombres replicados masivamente, voto en bloque inducido, y una correlación precisa entre participación y apoyo al oficialismo.
+• **Un experimento exitoso de "ingeniería electoral"**: Se construyó un mecanismo —las planillas oficiales— y se puso en marcha con una estructura de movilización territorial. Los resultados muestran una ejecución casi perfecta: nombres replicados masivamente, voto en bloque inducido, y una correlación precisa entre participación y apoyo al oficialismo.
 
 • **Desigualdad estructural entre aspirantes**: Lejos de una contienda abierta, el patrón observado apunta a un proceso cerrado, sin condiciones reales de equidad ni competencia.
 

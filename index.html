@@ -94,14 +94,7 @@
             <section class="hero">
                 <h1>El elefante en la urna: la elección judicial</h1>
                 <div class="subtitle">Aleister Montfort</div>
-                <div style="display: flex; align-items: center; justify-content: center; margin: 30px 0 20px 0; gap: 20px;">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTAwIDQwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTAiIGhlaWdodD0iNDAiIGZpbGw9IiNmZmZmZmYiLz4KPHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA4MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHRleHQgeD0iMTUiIHk9IjI4IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZmZmZmZmIj5JRVRQPC90ZXh0Pgo8L3N2Zz4KPC9zdmc+" alt="IETP Logo" style="height: 40px; filter: brightness(0) invert(1);">
-                    <div style="text-align: left;">
-                        <div style="font-size: 0.85em; opacity: 0.9;">Preparado para el</div>
-                        <div style="font-size: 0.85em; opacity: 0.8; margin-bottom: 3px;">Instituto de Estudios para la Transición Democrática</div>
-                    </div>
-                </div>
-                <div class="author">Museo León Trotsky • <span id="fecha-reporte"></span> </div>
+                <div class="author"><span id="fecha-reporte"></span></div>
             </section>
             
             <!-- I. Motivación -->
@@ -138,19 +131,19 @@
                     <p style="margin-bottom: 15px; line-height: 1.6;"><strong>¿Cómo se identifican?</strong><br>
                     Utilizando un método de análisis de redes, típico en estudios de redes sociales: la detección automática de comunidades.</p>
                     
-                    <ul style="margin: 15px 0; padding-left: 20px; line-height: 1.5;">
+                    <ul style="margin: 15px 0; padding-left: 30px; line-height: 1.5;">
                         <li style="margin-bottom: 8px;">Este algoritmo identifica grupos de nodos (candidaturas) densamente conectados entre sí, es decir, que fueron votados juntos de forma sistemática.</li>
                         <li style="margin-bottom: 8px;">La base es la matriz de correlaciones entre candidaturas, construida a partir del voto por sección.</li>
                     </ul>
                     <p style="margin-bottom: 15px; line-height: 1.6;"><strong>Comunidades y centralidad</strong><br>
                     
-                    <ul style="margin: 15px 0; padding-left: 20px; line-height: 1.5;">
+                    <ul style="margin: 15px 0; padding-left: 30px; line-height: 1.5;">
                         <li style="margin-bottom: 8px;">Una vez identificadas las comunidades, el análisis se centró en su estructura interna. ¿Quiénes ocupan el centro de cada grupo? ¿Quién ancló el voto en bloque? Para responderlo, medimos la centralidad de cada candidatura: qué tan conectada está dentro de su propia planilla. Quienes concentran más vínculos suelen ser quienes definieron el arrastre del grupo.Este algoritmo identifica grupos de nodos (candidaturas) densamente conectados entre sí, es decir, que fueron votados juntos de forma sistemática.</li>
                         <li style="margin-bottom: 8px;">Pero el análisis también revela lo opuesto: dentro de cada comunidad es posible detectar a quienes tienen menor centralidad, es decir, candidaturas con menos conexiones pero que se beneficiaron de ir en planilla. Ellos fueron arrastrados por la fuerza del grupo, obteniendo respaldo sin ser el eje de coordinación.</li>
                     </ul>
                     
                     <p style="margin-bottom: 12px; line-height: 1.6;"><strong>¿Qué representa el grafo?</strong></p>
-                    <ul style="margin: 15px 0; padding-left: 20px; line-height: 1.5;">
+                    <ul style="margin: 15px 0; padding-left: 30px; line-height: 1.5;">
                         <li style="margin-bottom: 8px;">Cada nodo es una candidatura.</li>
                         <li style="margin-bottom: 8px;">El tamaño del nodo indica qué tan central fue dentro de su grupo (cuántas veces fue votado junto a los demás).</li>
                         <li style="margin-bottom: 8px;">Las líneas muestran la intensidad de co-voto entre pares.</li>
